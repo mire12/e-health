@@ -2,20 +2,48 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@app/services": [
+        "src/app/services"
+      ],
+      "@app/services/*": [
+        "src/app/services/*"
+      ],
+      "@app/models": [
+        "src/app/models"
+      ],
+      "@app/models/*": [
+        "src/app/models/*"
+      ],
+      "@app/components": [
+        "src/app/components"
+      ],
+      "@app/components/*": [
+        "src/app/components/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "allowJs": true,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es5",
     "lib": [
       "es2018",
       "dom"
     ]
   },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
