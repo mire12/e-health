@@ -1,0 +1,23 @@
+
+.w100 {
+  width: 100% !important;
+  margin: 6px;
+}
+
+.mat-card{
+  padding: 2px;
+  background-color:white;
+}
+
+.mat-card-header{
+  justify-content: flex-start; /* for left*/
+  padding-top: 15px;
+  padding-bottom: 8px;
+  color: crimson;
+}
+
+.mat-card-content{
+  justify-content: flex-start; /* for left*/
+  padding: 5px;
+  background-color: white;
+}

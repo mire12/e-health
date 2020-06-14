@@ -33,8 +33,8 @@
                 </p>
             </table>
         </form>
-        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
     </mat-card-content>
+    <mat-spinner color="accent" mode="indeterminate" *ngIf="spinnerService.visibility | async"></mat-spinner>
     <mat-card-actions>
         <button mat-raised-button (click)="checkLogin()" color="primary">Login</button>
     </mat-card-actions>

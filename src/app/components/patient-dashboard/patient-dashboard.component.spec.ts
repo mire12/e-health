@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DynamicFormComponent } from './dynamic-form.component';
-import { DynamicFormModule } from './dynamic-form.module';
+import { PatientDashboardComponent } from './patient-dashboard.component';
 
-describe('DynamicFormComponent', () => {
-  let component: DynamicFormComponent;
-  let fixture: ComponentFixture<DynamicFormComponent>;
+describe('PatientDashboardComponent', () => {
+  let component: PatientDashboardComponent;
+  let fixture: ComponentFixture<PatientDashboardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ DynamicFormModule ]
+      declarations: [ PatientDashboardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DynamicFormComponent);
+    fixture = TestBed.createComponent(PatientDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

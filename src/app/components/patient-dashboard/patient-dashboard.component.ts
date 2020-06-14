@@ -1,12 +1,14 @@
 import { Component, VERSION } from '@angular/core';
 import { PatientQuestionService, AuthenticationService } from '@app/services';
+import { NavigationComponent } from '@app/components/navigation/navigation.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  providers: [NavigationComponent],
+  selector: 'patient-dashboard',
+  templateUrl: './patient-dashboard.component.html',
+  styleUrls: ['./patient-dashboard.component.css']
 })
-export class AppComponent {
+export class PatientDashboardComponent {
   title = 'e-health';
 
   patientDetails: any[];

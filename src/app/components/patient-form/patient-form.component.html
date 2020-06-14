@@ -1,15 +1,14 @@
-<div>
-  <form (ngSubmit)="onSubmit()"
-        [formGroup]="form">
+<mat-card>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div *ngFor="let question of patientDetails" class="form-row">
+          <app-question [question]="question" [form]="form"></app-question>
+      </div>
 
-    <div *ngFor="let question of patientDetails"
-         class="form-row">
-      <app-question [question]="question"
-                    [form]="form"></app-question>
-    </div>
-
-    <div class="form-row">
-      <button type="submit"
-              [disabled]="!form.valid">Save</button>
-    </div>
-  </form>
+      <div class="form-row">
+        <mat-spinner color="accent" mode="indeterminate" *ngIf="spinnerService.visibility | async"></mat-spinner>
+        <button mat-stroked-button type="submit" [disabled]="!form.valid">Save</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

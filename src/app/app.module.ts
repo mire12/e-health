@@ -1,16 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AngularMaterialModule } from './angular-material.module';
-import { QuestionService, QuestionControlService, PatientQuestionService, BasicAuthHttpInterceptorService } from '@app/services';
-import { DynamicFormModule } from '@app/components/dynamic-form/dynamic-form.module';
+import { MaterialModule } from './angular-material.module';
+import { QuestionControlService, PatientQuestionService, BasicAuthHttpInterceptorService } from '@app/services';
 import { DynamicFormQuestionModule } from '@app/components/dynamic-form-question/dynamic-form-question.module';
 import { PatientFormModule } from '@app/components/patient-form/patient-form.module';
+import { PatientDashboardModule } from '@app/components/patient-dashboard/patient-dashboard.module';
 import { LoginModule } from '@app/components/login/login.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavigationModule } from '@app/components/navigation/navigation.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
@@ -20,16 +21,18 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
     CommonModule,
-    DynamicFormModule,
     DynamicFormQuestionModule,
     PatientFormModule,
+    PatientDashboardModule,
     LoginModule,
-    NgbModule,
+    NavigationModule,
     AppRoutingModule,
-    AngularMaterialModule
+    MaterialModule
   ],
-  providers: [QuestionService, QuestionControlService, PatientQuestionService,{
+  providers: [QuestionControlService, PatientQuestionService, {
     provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true
   }],
   bootstrap: [AppComponent]

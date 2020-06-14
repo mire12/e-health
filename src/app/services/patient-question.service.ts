@@ -5,8 +5,10 @@ import {
   QuestionBase,
   DropdownQuestion,
   TextboxQuestion,
-  TextareaQuestion
+  TextareaQuestion,
+  DatePickerQuestion
 } from '@app/models';
+import { MatOptionSelectionChange } from '@angular/material/core';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,7 @@ export class PatientQuestionService {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Access-Control-Allow-Origin':'http://localhost:4200',
+      'Access-Control-Allow-Methods': 'GET, POST, DELETE, HEAD, OPTIONS'
 
     });
    }
@@ -29,13 +32,11 @@ export class PatientQuestionService {
     const options = {
       headers: this.corsHeaders
     };
-    return this.httpClient.get(this.REST_API_SERVER + '/' + encodeURIComponent(id), options);
+    return this.httpClient.get('ehealth/patient/' + encodeURIComponent(id), options);
   }
 
-  public savePatient(){
-    return this.httpClient.post(this.REST_API_SERVER + '/save', {
-      "email": "miroo.koren@gmail.com"
-    }, {
+  public savePatient(patientPayload: any){
+    return this.httpClient.post('ehealth/patient/save', patientPayload, {
       headers: this.corsHeaders
     });
   }
@@ -59,7 +60,7 @@ export class PatientQuestionService {
       }),
 
       new DropdownQuestion({
-        key: 'bloddgroup',
+        key: 'bloodGroup',
         label: 'Krvná skupina',
         options: [
           { key: 'a', value: 'A skupina' },
@@ -81,14 +82,22 @@ export class PatientQuestionService {
       }),
 
       new TextboxQuestion({
-        key: 'lastName',
+        key: 'lastNames',
         label: 'Priezvisko',
         value: ['Baranec..'],
         iterable: true,
         order: 2
       }),
 
-      new TextboxQuestion({
+      new DatePickerQuestion({
+        key: 'birthDate',
+        label: 'Dátum narodenia',
+        value: '',
+        required: true,
+        order: 1
+      }),
+
+      /*new TextboxQuestion({
         key: 'height',
         label: 'Výška',
         type: 'range',
@@ -96,10 +105,10 @@ export class PatientQuestionService {
         min: 0,
         max: 250,
         order: 6
-      }),
+      }),*/
 
       new TextboxQuestion({
-        key: 'emailAddress',
+        key: 'email',
         label: 'Email',
         type: 'email',
         order: 5

@@ -22,15 +22,28 @@ export class JwtResponse{
 
 export class AuthenticationService {
 
-  constructor(
-    private httpClient:HttpClient
-  ) {
+  private corsHeaders: HttpHeaders;
 
-  }
+  constructor(private httpClient: HttpClient) {
+    this.corsHeaders = new HttpHeaders({
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': 'Sat, 01 Jan 2021 00:00:00 GMT',
+      'Content-Type': 'application/json;charset=utf-8',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin':'http://localhost:4200',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, HEAD, OPTIONS'
+
+    });
+   }
 
      authenticate(username, password) {
 
-      return this.httpClient.post<any>('https://localhost:8443/authenticate',{username,password}).pipe(
+      const options = {
+        headers: this.corsHeaders
+      };
+
+      return this.httpClient.post<any>('ehealth/authenticate',{username,password}, options).pipe(
 
        map(
          userData => {
@@ -45,7 +58,6 @@ export class AuthenticationService {
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')
-    //console.log(!(user === null))
     return !(user === null)
   }
 

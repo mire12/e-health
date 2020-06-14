@@ -1,25 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-/* Custom styles for options */
-.good {
-  border-color: green !important;
-}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.bad {
-  border-color: red !important;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: lightgrey; }
 
-textarea {
-  resize: vertical;
+.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+  padding: 15px;
 }
-
-pre {
-  max-height: 40vh;
-  overflow: scroll;
-}
-
-button {
-  margin-right: 5px;
-}
-
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';

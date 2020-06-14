@@ -1,0 +1,84 @@
+<div class="container">
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Patient</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="belowMenu">Doctor</button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Hospital</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="afterMenu">Extra</button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <mat-grid-list cols="3"  rowHeight="100px">
+    <mat-grid-tile colspan="3" rowspan="1">
+      <div class="w100">
+        <mat-card class="mat-elevation-z2">
+          <mat-card-header>
+            <mat-card-title>
+              detail pacienta
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content> E-health example form</mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile rowspan="14">
+      <div class="w100">
+        <mat-card class="mat-elevation-z2">
+          <mat-card-header>
+            <mat-card-title>
+              detail pacienta
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <app-patient-form #dynamicForm [patientDetails]="patientDetails">
+            </app-patient-form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile rowspan="3">
+      <div class="w100">
+        <mat-card class="mat-elevation-z2">
+          <mat-card-header>
+            <mat-card-title>Resulting JSON object</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="mat-card-content">
+            <pre><code>{{ dynamicForm.form.value | json }}</code></pre>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile rowspan="17">
+      <div class="w100">
+        <mat-card class="mat-elevation-z2">
+          <mat-card-header class="mat-card-header">
+            <mat-card-title>
+              Form Data Structure
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <pre><code>{{ patientDetails | json }}</code></pre>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
