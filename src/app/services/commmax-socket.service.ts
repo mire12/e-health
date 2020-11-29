@@ -17,7 +17,13 @@ export class CommmaxSocketService {
   });
   private corsHeaders: HttpHeaders;
 
-  private baseURL: string = 'https://www.itradix.online';
+  private baseURL: string = 'http://localhost:3377';
+
+  private httpHeaders = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
 
   constructor(private httpClient: HttpClient) {
     this.corsHeaders = new HttpHeaders({
@@ -27,6 +33,8 @@ export class CommmaxSocketService {
       'Access-Control-Allow-Methods': 'GET, POST, DELETE, HEAD, OPTIONS',
       responseType: 'text',
     });
+
+
   }
 
   overVerziu(pID: String, evID: String, dID: String): Observable<any> {
@@ -36,9 +44,9 @@ export class CommmaxSocketService {
     };
 
     return this.httpClient
-      .get(
+      .post<any>(
         `${this.baseURL}/OVERVERZIU?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413`,
-        options
+        this.httpHeaders
       )
       .pipe(
         map((res) => {
