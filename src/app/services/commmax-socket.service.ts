@@ -30,6 +30,7 @@ export class CommmaxSocketService {
       Accept: 'text/plain',
       'Access-Control-Allow-Origin':'https://ehealth-ng-app.herokuapp.com',
       'Access-Control-Allow-Methods': 'GET, POST, DELETE, HEAD, OPTIONS',
+      'Access-Control-Allow-Headers': 'Authorization',
       responseType: 'text',
     });
 
