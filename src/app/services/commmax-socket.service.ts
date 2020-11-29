@@ -46,7 +46,7 @@ export class CommmaxSocketService {
     return this.httpClient
       .post<any>(
         `${this.baseURL}/OVERVERZIU?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413`,
-        this.httpHeaders
+        this.corsHeaders
       )
       .pipe(
         map((res) => {
