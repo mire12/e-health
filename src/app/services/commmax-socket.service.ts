@@ -28,9 +28,9 @@ export class CommmaxSocketService {
   constructor(private httpClient: HttpClient) {
     this.corsHeaders = new HttpHeaders({
       Accept: 'text/plain',
-      'Access-Control-Allow-Origin':'https://ehealth-ng-app.herokuapp.com',
-      'Access-Control-Allow-Methods': 'GET, POST, DELETE, HEAD, OPTIONS',
-      'Access-Control-Allow-Headers': 'Authorization',
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept, Authorization',
       responseType: 'text',
     });
 
