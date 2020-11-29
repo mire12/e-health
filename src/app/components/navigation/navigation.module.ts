@@ -10,7 +10,7 @@ import { PatientDashboardModule } from '@app/components/patient-dashboard/patien
     MaterialModule,
     PatientDashboardModule
   ],
-  providers: [PatientDashboardModule],
+  providers: [],
   declarations: [NavigationComponent],
   exports: [NavigationComponent]
 })

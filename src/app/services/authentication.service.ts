@@ -23,6 +23,7 @@ export class JwtResponse{
 export class AuthenticationService {
 
   private corsHeaders: HttpHeaders;
+  private baseURL: string = 'https://www.itradix.online';
 
   constructor(private httpClient: HttpClient) {
     this.corsHeaders = new HttpHeaders({
@@ -43,7 +44,7 @@ export class AuthenticationService {
         headers: this.corsHeaders
       };
 
-      return this.httpClient.post<any>('ehealth/authenticate',{username,password}, options).pipe(
+      return this.httpClient.post<any>(`${this.baseURL}/ehealth/authenticate`,{username,password}, options).pipe(
 
        map(
          userData => {

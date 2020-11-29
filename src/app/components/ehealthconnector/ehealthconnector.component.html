@@ -1,0 +1,21 @@
+<form [formGroup]="form" style="margin-bottom: 100px;">
+
+  <div style="margin: 10px" class="form-row">
+    <button style="margin-right: 10px" mat-stroked-button (click)="oververziu('1','1','1')">Over verziu</button>
+    <button style="margin-right: 10px" mat-stroked-button (click)="dajjruzid('1','1','1')">Daj JRUZ ID</button>
+    <button style="margin-right: 10px" mat-stroked-button (click)="dajSumarKontaktneUdaje('1','1','1','1')">Daj Sumár Kontaktné Údaje</button>
+    <button style="margin-right: 10px" mat-stroked-button (click)="dajPacientskySumar('1','1','1','1')">Daj Sumár Pacienta</button>
+  </div>
+
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Spojenie ehealth</mat-label>
+  <textarea
+       matInput
+      [formControl]="textAreaFeed"
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="10"
+      cdkAutosizeMaxRows="10">
+  </textarea>
+</mat-form-field>
+<mat-spinner color="accent" mode="indeterminate" *ngIf="spinnerService.visibility | async"></mat-spinner>
+</form>

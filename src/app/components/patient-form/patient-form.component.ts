@@ -1,13 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { QuestionBase } from '@app/models';
+import { QuestionBase, Patient } from '@app/models';
 import { FormGroup, Validators, FormArray} from '@angular/forms';
-import { QuestionControlService, PatientQuestionService, SpinnerService } from '@app/services';
-
+import { QuestionControlService, PatientQuestionService } from '@app/services';
+import { SpinnerService} from '@app/services/spinner.service'
 
 @Component({
   selector: 'app-patient-form',
   templateUrl: './patient-form.component.html',
-  styleUrls: ['./patient-form.component.css']
+  styleUrls: ['./patient-form.component.css'],
+  providers: []
 })
 export class PatientFormComponent implements OnInit {
 
@@ -27,12 +28,13 @@ export class PatientFormComponent implements OnInit {
      });
     this.form.controls['bloodGroup'].setValidators([Validators.required]);
     this.form.controls['birthDate'].setValidators([Validators.required]);
+    this.form.controls['zipCode'].setValidators([Validators.pattern('[0-9]{4,5}')]);
 
   }
 
   onSubmit() {
     this.payLoad = this.form.value;
-    this.pqs.savePatient(this.payLoad).subscribe((data: any[])=>{
+    this.pqs.savePatient(this.payLoad).subscribe((data: Patient[])=>{
       this.restData = data;
     })
   }

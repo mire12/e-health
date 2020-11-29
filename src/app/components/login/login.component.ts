@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService, SpinnerService } from '@app/services';
+import { AuthenticationService } from '@app/services';
+import { SpinnerService} from '@app/services/spinner.service'
 
 @Component({
   selector: 'app-login',

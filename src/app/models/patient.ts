@@ -1,9 +1,14 @@
-export class Patient {
+export interface Patient {
+    id: number,
+    name: string,
+    dateOfBirth: Date,
+    gender?: string,
+    lastNames: {
+      [key: string]: LastName,
+    
+  };
+}
 
-  constructor(
-    public id: number,
-    public name: string,
-    public dateOfBirth: Date,
-    public gender?: string
-  ) {  }
+export interface LastName {
+  lastName: String
 }

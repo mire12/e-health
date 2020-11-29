@@ -10,12 +10,9 @@ import {
 } from '@app/models';
 import { MatOptionSelectionChange } from '@angular/material/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PatientQuestionService {
 
-  private REST_API_SERVER = "https://localhost:8443/patient";
   private corsHeaders: HttpHeaders;
 
   constructor(private httpClient: HttpClient) {
@@ -89,6 +86,35 @@ export class PatientQuestionService {
         order: 2
       }),
 
+
+      new TextboxQuestion({
+        key: 'street',
+        label: 'Ulica',
+        value: '',
+        required: true,
+        order: 8
+      }),
+
+      new TextboxQuestion({
+        key: 'address number',
+        label: 'Číslo popisné ',
+        type: 'number',
+        min: '1',
+        max: '1000',
+        value: '',
+        required: true,
+        order: 9
+      }),
+
+      new TextboxQuestion({
+        key: 'zipCode',
+        label: 'Poštové smerovacie číslo',
+        value: '',
+        required: true,
+        order: 10
+
+      }),
+
       new DatePickerQuestion({
         key: 'birthDate',
         label: 'Dátum narodenia',
@@ -97,15 +123,13 @@ export class PatientQuestionService {
         order: 1
       }),
 
-      /*new TextboxQuestion({
-        key: 'height',
-        label: 'Výška',
-        type: 'range',
-        value: 190,
-        min: 0,
-        max: 250,
-        order: 6
-      }),*/
+      new TextboxQuestion({
+        key: 'personalId',
+        label: 'Rodné číslo',
+        type: 'text',
+        required: true,
+        order: 3
+      }),
 
       new TextboxQuestion({
         key: 'email',
