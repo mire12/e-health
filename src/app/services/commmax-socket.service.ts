@@ -15,42 +15,28 @@ export class CommmaxSocketService {
     url: 'ws://localhost:3379',
     deserializer: (msg) => msg,
   });
-  private corsHeaders: HttpHeaders;
 
   private baseURL: string = 'http://localhost:3377';
 
-  private httpHeaders = {
+  private HTTPOptions: Object = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
+      'X-Skip-Interceptor': 'true',
+    }),
+    responseType: 'text',
+  };
 
-  constructor(private httpClient: HttpClient) {
-    this.corsHeaders = new HttpHeaders({
-      Accept: 'text/plain',
-      'Access-Control-Allow-Origin':'*',
-      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-      responseType: 'text',
-    });
-
-
-  }
+  constructor(private httpClient: HttpClient) {}
 
   overVerziu(pID: String, evID: String, dID: String): Observable<any> {
-
-    const options = {
-      headers: this.corsHeaders
-    };
-
     return this.httpClient
       .post<any>(
         `${this.baseURL}/OVERVERZIU?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413`,
-        this.corsHeaders
+        null,
+        this.HTTPOptions
       )
       .pipe(
         map((res) => {
-          console.log('response commax: ' + res)
+          console.log('response commax: ' + res);
           return res;
         })
       );
@@ -58,44 +44,54 @@ export class CommmaxSocketService {
 
   dajJruzID(pID: String, evID: String, dID: String): Observable<any> {
     return this.httpClient
-      .get(
-        'https://www.itradix.online/ehealth/commmax/jruzid?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413&patient=8707267239',
-        {
-          responseType: 'text',
-        }
+      .post<any>(
+        `${this.baseURL}/GET_JRUZID?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413&patient=00074533134`,
+        null,
+        this.HTTPOptions
       )
       .pipe(
         map((res) => {
+          console.log('response commax: ' + res);
           return res;
         })
       );
   }
 
-  dajSumarKontaktneUdaje(pID: String, evID: String, dID: String, patient:String): Observable<any> {
+  dajSumarKontaktneUdaje(
+    pID: String,
+    evID: String,
+    dID: String,
+    patient: String
+  ): Observable<any> {
     return this.httpClient
-      .get(
-        'https://www.itradix.online/ehealth/commmax/dajpacientskysumarudaje?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413&patient=00074533134',
-        {
-          responseType: 'text',
-        }
+      .post<any>(
+        `${this.baseURL}/DAJ_SUMAR_UDAJE?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413&patient=00074533134`,
+        null,
+        this.HTTPOptions
       )
       .pipe(
         map((res) => {
+          console.log('response commax: ' + res);
           return res;
         })
       );
   }
 
-  dajPacientskySumar(pID: String, evID: String, dID: String, patient:String): Observable<any> {
+  dajPacientskySumar(
+    pID: String,
+    evID: String,
+    dID: String,
+    patient: String
+  ): Observable<any> {
     return this.httpClient
-      .get(
-        'https://www.itradix.online/ehealth/commmax/dajpacientskysumar?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413&patient=00074533134',
-        {
-          responseType: 'text',
-        }
+      .post<any>(
+        `${this.baseURL}/DAJ_SUMAR?pID=9c225a25baf2847828f299f46f22428571a4b305ad465e130ce58ac32e854fd0&dID=075441be7bc0cdbab6093bbaed5a25b2c06d33c6a2e74601cbea17d0885a75a5&evID=eVvyhladaj_zaznamy_preziadatela/db4d6732ef32dcd50cc2a7dbde3f89b4e67599017c0958c521c19c12d2b0cae920200717144413&patient=00074533134`,
+        null,
+        this.HTTPOptions
       )
       .pipe(
         map((res) => {
+          console.log('response commax: ' + res);
           return res;
         })
       );

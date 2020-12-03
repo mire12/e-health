@@ -6,12 +6,13 @@ import { AuthenticationService } from '@app/services'
 import { MaterialModule } from 'src/app/angular-material.module';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [AuthenticationService],
   declarations: [LoginComponent],

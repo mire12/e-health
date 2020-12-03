@@ -32,7 +32,7 @@ export class AuthenticationService {
       'Expires': 'Sat, 01 Jan 2021 00:00:00 GMT',
       'Content-Type': 'application/json;charset=utf-8',
       'Accept': 'application/json',
-      'Access-Control-Allow-Origin':'https://ehealth-ng-app.herokuapp.com',
+      'Access-Control-Allow-Origin':'https://ehealth-ng-app.herokuapp.com, http://localhost:4200',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, HEAD, OPTIONS'
 
     });

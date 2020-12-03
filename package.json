@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start:prod": "node server.js",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config src/proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -33,7 +33,7 @@
     "module-alias": "^2.2.2",
     "ngx-socket-io": "^3.0.1",
     "rxjs": "~6.5.4",
-    "tslib": "^1.10.0",
+    "tslib": "^1.14.1",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
   },

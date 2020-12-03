@@ -15,6 +15,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatDialogModule
   ],
-  providers: [ErrorDialogService]
+  providers: [ErrorDialogService],
+  entryComponents: [
+    ErrorDialogComponent
+ ]
 })
 export class ErrordialogModule { }
