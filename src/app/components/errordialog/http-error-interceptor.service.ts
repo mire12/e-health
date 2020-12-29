@@ -32,7 +32,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           reason:
             error && error.error && error.error.reason
               ? error.error.reason
-              : 'Neznáma chyba: ' + JSON.stringify(error.error),
+              : `Neznáma chyba: ${JSON.stringify(error.error)}  , Správa ${JSON.stringify(error.message)}`,
           status: error.status,
         };
         this.errorDialogService.openDialog(data);

@@ -31,10 +31,16 @@
     "express": "^4.17.1",
     "flatpickr": "^4.6.3",
     "module-alias": "^2.2.2",
+    "ngx-json-viewer": "^2.4.0",
     "ngx-socket-io": "^3.0.1",
     "rxjs": "~6.5.4",
+    "stream": "0.0.2",
+    "stream-browserify": "^3.0.0",
+    "timers": "^0.1.1",
+    "timers-browserify": "^2.0.12",
     "tslib": "^1.14.1",
     "web-animations-js": "^2.3.2",
+    "xml2js": "^0.4.23",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

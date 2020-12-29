@@ -13,7 +13,7 @@ export class AppComponent  {
   version = VERSION.full;
 
   constructor(patientService: PatientQuestionService, commaxService: CommmaxSocketService) {
-    this.patientDetails = patientService.getPatientDetails();
+    //this.patientDetails = patientService.getPatientDetails();
   }
 
 }

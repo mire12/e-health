@@ -27,9 +27,7 @@ export class BasicAuthHttpInterceptorService implements HttpInterceptor {
         req = req.clone({ headers });
       } else {
         req = req.clone({
-          setHeaders: {
-            Authorization: sessionStorage.getItem('token'),
-          },
+          headers: req.headers.set('Authorization', sessionStorage.getItem('token'))
         });
       }
     }
@@ -38,7 +36,7 @@ export class BasicAuthHttpInterceptorService implements HttpInterceptor {
       tap(
         (event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
-            this.spinnerService.hide();
+            //this.spinnerService.hide();
           }
         },
         (error) => {

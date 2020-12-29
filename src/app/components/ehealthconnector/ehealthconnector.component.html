@@ -1,21 +1,33 @@
-<form [formGroup]="form" style="margin-bottom: 100px;">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin-bottom: 10px">
 
-  <div style="margin: 10px" class="form-row">
-    <button style="margin-right: 10px" mat-stroked-button (click)="oververziu('1','1','1')">Over verziu</button>
-    <button style="margin-right: 10px" mat-stroked-button (click)="dajjruzid('1','1','1')">Daj JRUZ ID</button>
-    <button style="margin-right: 10px" mat-stroked-button (click)="dajSumarKontaktneUdaje('1','1','1','1')">Daj Sumár Kontaktné Údaje</button>
-    <button style="margin-right: 10px" mat-stroked-button (click)="dajPacientskySumar('1','1','1','1')">Daj Sumár Pacienta</button>
+  <div *ngFor="let question of ehealthRequestDetails" class="form-row">
+    <app-question [question]="question" [form]="form"></app-question>
   </div>
 
-<mat-form-field appearance="outline" style="width: 100%;">
-  <mat-label>Spojenie ehealth</mat-label>
-  <textarea
-       matInput
+  <div class="form-row" style="margin-top: 30px; margin-bottom: 30px">
+    <button mat-stroked-button type="submit" [disabled]="!form.valid">
+      Odošli do NCZI
+    </button>
+  </div>
+
+  <mat-form-field appearance="outline" style="width: 100%">
+    <mat-label>Spojenie NCZI</mat-label>
+    <textarea
+      matInput
+      #textarea
       [formControl]="textAreaFeed"
+      [scrollTop]="textarea.scrollHeight"
       cdkTextareaAutosize
       cdkAutosizeMinRows="10"
-      cdkAutosizeMaxRows="10">
-  </textarea>
-</mat-form-field>
-<mat-spinner color="accent" mode="indeterminate" *ngIf="spinnerService.visibility | async"></mat-spinner>
+      cdkAutosizeMaxRows="10"
+    >
+    </textarea>
+  </mat-form-field>
 </form>
+<div style="width: 100%; height: 100px; overflow: hidden;">
+  <mat-spinner
+    color="accent"
+    mode="indeterminate"
+    *ngIf="spinnerService.visibility | async"
+  ></mat-spinner>
+</div>

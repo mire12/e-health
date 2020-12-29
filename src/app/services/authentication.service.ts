@@ -24,6 +24,8 @@ export class AuthenticationService {
 
   private corsHeaders: HttpHeaders;
   private baseURL: string = 'https://www.itradix.online';
+  //private baseURL: string = 'https://localhost:8443';
+
 
   constructor(private httpClient: HttpClient) {
     this.corsHeaders = new HttpHeaders({

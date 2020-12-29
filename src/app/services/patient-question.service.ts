@@ -19,7 +19,7 @@ export class PatientQuestionService {
     this.corsHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Access-Control-Allow-Origin':'http://localhost:4200',
+      'Access-Control-Allow-Origin':'*',
       'Access-Control-Allow-Methods': 'GET, POST, DELETE, HEAD, OPTIONS'
 
     });

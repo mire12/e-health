@@ -5,7 +5,15 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+      "timers": [
+        "node_modules/timers-browserify"
+      ],
+      "stream": [
+        "node_modules/stream-browserify"
+      ],
+    }
   },
   "files": [
     "src/test.ts",

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   wsEndpoint: 'ws://localhost:3377/wss',
-  reconnectInterval: 2000
+  reconnectInterval: 2000,
+  serverUrl:'https://localhost:8443'
 };
 
 /*

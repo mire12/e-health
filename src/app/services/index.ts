@@ -1,4 +1,5 @@
 export * from './patient-question.service';
+export * from './ehealth-request-question.service';
 export * from './question-control.service';
 export * from './authentication.service';
 export * from './basicauth-http-interceptor.service';

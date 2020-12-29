@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { ErrorDialogComponent } from './errordialog.component';
+import { XmlDialogComponent } from './xmldialog.component';
+import * as xml2js from 'xml2js';
 
 @Injectable()
-export class ErrorDialogService {
+export class XmlDialogService {
     public isDialogOpen: Boolean = false;
     constructor(public dialog: MatDialog) { }
     openDialog(data): any {
         if (this.isDialogOpen) {
             return false;
         }
+
+        xml2js.parseString( data, function (err, result) {
+          data = result; // Prints JSON object!
+
+        });
+
         this.isDialogOpen = true;
-        const dialogRef = this.dialog.open(ErrorDialogComponent, {
+        const dialogRef = this.dialog.open(XmlDialogComponent, {
             width: '700px',
             data: data
         });
