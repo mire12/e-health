@@ -81,7 +81,7 @@ export class EhealthconnectorComponent implements OnInit {
     }
     if (this.eqs.getActiveRequest() === 2) {
       this.oververziu(
-        this.payLoad['patient'],
+        uuid.v4(),
         uuid.v4(),
         uuid.v4()
       );

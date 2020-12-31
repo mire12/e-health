@@ -44,7 +44,7 @@ export class VersionCheckFormComponent extends EhealthconnectorComponent {
     this.setOververziuXml('slkdfjsd', 'fsdfjsdfsd');
 
       this.oververziu(
-        this.payLoad['patient'],
+        Math.random().toString(36).substring(7),
         Math.random().toString(36).substring(7),
         Math.random().toString(36).substring(7)
       );
