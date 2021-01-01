@@ -70,7 +70,32 @@ export class EhealthRequestQuestionService {
   }
 
   getPatientContactDetails() {
+    type Diagnose = {
+      key: string;
+      value: string;
+    }
+    let options: Diagnose[] = new Array();
+
+    this.backendService
+      .getListDiagnoses('1.3.158.00165387.100.10.34', '8')
+      .subscribe((diagnoses: Object[]) => {
+
+
+        for (var diagnose of diagnoses) {
+          let option = { key: diagnose[2], value: diagnose[3] };
+          options.push(option);
+        }
+      });
+
     const questions: QuestionBase<any>[] = [
+      new DropdownQuestion({
+        key: 'doctor-specification',
+        label: 'Zdravotnícka odbornosť',
+        options: options,
+        placeholder: 'Vyberte jednu z možností',
+        order: 2,
+      }),
+
       new DropdownQuestion({
         key: 'patient',
         label: 'pacient',
