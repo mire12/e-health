@@ -1,8 +1,29 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, AbstractControl, FormGroupDirective, FormControl, NgForm, Validators } from '@angular/forms';
 
 import { QuestionBase } from '@app/models';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { DateAdapter, ErrorStateMatcher, NativeDateAdapter } from '@angular/material/core';
+
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { formatDate } from '@angular/common';
+
+
+
+export const MY_DATE_FORMATS = {
+
+  parse: {
+
+    dateInput: 'DD-MM-YYYY',
+  },
+  display: {
+
+    dateInput: 'DD-MM-YYYY',
+    monthYearLabel: 'MM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM-YYYY',
+  },
+
+};
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -10,10 +31,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
+@Injectable()
+export class PickDateAdapter extends NativeDateAdapter {
+  format(date: Date, displayFormat: Object): string {
+      if (displayFormat === 'MM YYYY') {
+          return formatDate(date,'dd-MMM-yyyy',this.locale);
+      } else {
+          return date.toDateString();
+      }
+  }
+}
+
 @Component({
   selector: 'app-question',
   templateUrl: './dynamic-form-question.component.html',
-  styleUrls: ['./dynamic-form-question.component.css']
+  styleUrls: ['./dynamic-form-question.component.css'],
+  providers: [
+    { provide: DateAdapter, useClass: PickDateAdapter},
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+  ]
 })
 export class DynamicFormQuestionComponent implements OnInit {
 

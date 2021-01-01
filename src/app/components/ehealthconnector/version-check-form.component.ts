@@ -41,7 +41,7 @@ export class VersionCheckFormComponent extends EhealthconnectorComponent {
     this.payLoad = this.form.value;
     this.spinnerService.show();
 
-    this.setOververziuXml('slkdfjsd', 'fsdfjsdfsd');
+    this.setOververziuXml( this.payLoad['date'], this.payLoad['doctor-specification']);
 
       this.oververziu(
         Math.random().toString(36).substring(7),
@@ -56,10 +56,10 @@ export class VersionCheckFormComponent extends EhealthconnectorComponent {
       .setOververziuXml(date,classification)
       .subscribe((response: string) => {
         if (response)
-          this.appendFeed('Xml data uspesne spracovane');
+          this.appendFeed('Xml data uspesne upravene na servri');
         else {
           this.appendFeed(
-            'Xml data newuspesne spracovane: '  + response
+            'Xml data sa nepodarilo spracovat : '  + response
           );
         }
       });

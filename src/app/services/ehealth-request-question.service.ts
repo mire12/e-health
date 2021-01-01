@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { QuestionBase, DropdownQuestion, TextboxQuestion } from '@app/models';
+import { QuestionBase, DropdownQuestion, TextboxQuestion, DatePickerQuestion } from '@app/models';
 import { BackendService } from '@app/services/backendService.service';
 
 @Injectable()
@@ -102,6 +102,13 @@ export class EhealthRequestQuestionService {
         required: false,
         disabled: true,
         order: 1,
+      }),
+
+      new DatePickerQuestion({
+        key: 'date',
+        label: 'Dátum overenia',
+        value: '',
+        order: 3
       }),
     ];
 

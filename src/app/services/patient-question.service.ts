@@ -117,7 +117,7 @@ export class PatientQuestionService {
 
       new DatePickerQuestion({
         key: 'birthDate',
-        label: 'Dátum narodenia',
+        label: 'Dátum',
         value: '',
         required: true,
         order: 1
