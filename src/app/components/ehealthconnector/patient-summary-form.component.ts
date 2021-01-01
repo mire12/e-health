@@ -62,8 +62,7 @@ export class PatientSummaryFormComponent extends EhealthconnectorComponent {
 
   public setDajPacientskySumarXml(classification: string) {
     this.appendFeed('Nastevenie hodnot z formulara do xml requestu');
-    this.backendService
-      .setDajPacientskySumarXml(classification)
+    this.backendService.setDajPacientskySumarXml(classification)
       .subscribe((response: string) => {
         if (response) this.appendFeed('Xml data uspesne upravene na servri');
         else {

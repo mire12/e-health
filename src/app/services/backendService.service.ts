@@ -61,5 +61,17 @@ export class BackendService {
       );
   }
 
+  setDajPacientskySumarXml(classification:string): Observable<any> {
+
+    return this.httpClient
+      .post(
+        `${this.baseURL}/ehealth/dajpacientskysumar/xml?classification=${classification}`, null,  this.HTTPOptions)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
 
 }
