@@ -47,7 +47,7 @@ export class EhealthRequestQuestionService {
 
       new DropdownQuestion({
         key: 'patient',
-        label: 'pacient',
+        label: 'Pacient',
         options: [
           { key: '00074533134', value: 'Záborská Anna' },
           { key: '00077655595', value: 'Heretiková Svetlana' },
@@ -98,7 +98,110 @@ export class EhealthRequestQuestionService {
 
       new DropdownQuestion({
         key: 'patient',
-        label: 'pacient',
+        label: 'Pacient',
+        options: [
+          { key: '00074533134', value: 'Záborská Anna' },
+          { key: '00077655595', value: 'Heretiková Svetlana' },
+        ],
+        placeholder: 'Vyberte jednu z možností',
+        order: 2,
+      }),
+
+      new TextboxQuestion({
+        key: 'doctor',
+        label: 'Lekár',
+        value: 'Aleš Galko - všeobecný lekár',
+        required: true,
+        disabled: true,
+        order: 1,
+      }),
+    ];
+
+    return questions.sort((a, b) => a.order - b.order);
+  }
+
+
+  getPatientHealthCheckSearch() {
+    type Diagnose = {
+      key: string;
+      value: string;
+    }
+    let options: Diagnose[] = new Array();
+
+    this.backendService
+      .getListDiagnoses('1.3.158.00165387.100.10.34', '8')
+      .subscribe((diagnoses: Object[]) => {
+
+
+        for (var diagnose of diagnoses) {
+          let option = { key: diagnose[2], value: diagnose[3] };
+          options.push(option);
+        }
+      });
+
+    const questions: QuestionBase<any>[] = [
+      new DropdownQuestion({
+        key: 'doctor-specification',
+        label: 'Zdravotnícka odbornosť',
+        options: options,
+        placeholder: 'Vyberte jednu z možností',
+        order: 2,
+      }),
+
+      new DropdownQuestion({
+        key: 'patient',
+        label: 'Pacient',
+        options: [
+          { key: '00074533134', value: 'Záborská Anna' },
+          { key: '00077655595', value: 'Heretiková Svetlana' },
+        ],
+        placeholder: 'Vyberte jednu z možností',
+        order: 2,
+      }),
+
+      new TextboxQuestion({
+        key: 'doctor',
+        label: 'Lekár',
+        value: 'Aleš Galko - všeobecný lekár',
+        required: true,
+        disabled: true,
+        order: 1,
+      }),
+    ];
+
+    return questions.sort((a, b) => a.order - b.order);
+  }
+
+  getJruzId() {
+    type Diagnose = {
+      key: string;
+      value: string;
+    }
+    let options: Diagnose[] = new Array();
+
+    this.backendService
+      .getListDiagnoses('1.3.158.00165387.100.10.34', '8')
+      .subscribe((diagnoses: Object[]) => {
+
+
+        for (var diagnose of diagnoses) {
+          let option = { key: diagnose[2], value: diagnose[3] };
+          options.push(option);
+        }
+      });
+
+    const questions: QuestionBase<any>[] = [
+      new DropdownQuestion({
+        key: 'doctor-specification',
+        label: 'Zdravotnícka odbornosť',
+        options: options,
+        placeholder: 'Vyberte jednu z možností',
+        order: 2,
+      }),
+
+      new DropdownQuestion({
+        key: 'patient',
+        label: 'Pacient',
         options: [
           { key: '00074533134', value: 'Záborská Anna' },
           { key: '00077655595', value: 'Heretiková Svetlana' },
@@ -167,6 +270,56 @@ export class EhealthRequestQuestionService {
 
     return questions.sort((a, b) => a.order - b.order);
   }
+
+  getOupzs() {
+
+    type Diagnose = {
+      key: string;
+      value: string;
+    }
+    let options: Diagnose[] = new Array();
+
+    this.backendService
+      .getListDiagnoses('1.3.158.00165387.100.10.34', '8')
+      .subscribe((diagnoses: Object[]) => {
+
+
+        for (var diagnose of diagnoses) {
+          let option = { key: diagnose[2], value: diagnose[3] };
+          options.push(option);
+        }
+      });
+
+    const questions: QuestionBase<any>[] = [
+      new DropdownQuestion({
+        key: 'doctor-specification',
+        label: 'Zdravotnícka odbornosť',
+        options: options,
+        placeholder: 'Vyberte jednu z možností',
+        order: 2,
+      }),
+
+      new TextboxQuestion({
+        key: 'doctor',
+        label: 'Lekár',
+        value: 'Aleš Galko - všeobecný lekár',
+        required: false,
+        disabled: true,
+        order: 1,
+      }),
+
+      new DatePickerQuestion({
+        key: 'date',
+        label: 'Dátum overenia',
+        value: '',
+        order: 3
+      }),
+    ];
+
+    return questions.sort((a, b) => a.order - b.order);
+  }
+
+
 
   setActiveRequest(activeRequest: number) {
     this.activeRequest = activeRequest;

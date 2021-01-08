@@ -86,6 +86,13 @@ export class EhealthconnectorComponent implements OnInit {
         uuid.v4()
       );
     }
+    if (this.eqs.getActiveRequest() === 3) {
+      this.oververziu(
+        uuid.v4(),
+        uuid.v4(),
+        uuid.v4()
+      );
+    }
   }
 
   public questionControl(): AbstractControl {
@@ -100,7 +107,7 @@ export class EhealthconnectorComponent implements OnInit {
       //console.log((jsonRawData = msg.data.match(/'([^']+)'/)[1]));
       jsonRawData = JSON.parse(msg.data.match(/'([^']+)'/)[1]);
 
-      if (jsonRawData.code === '0') {
+      if (jsonRawData.code === '0' || jsonRawData.code === 'E700002') {
         this.appendFeed(
           'Úspešné spojenie s NCZI, získaná odpoveď na volanie metódy: ' +
             jsonRawData.method
@@ -115,7 +122,8 @@ export class EhealthconnectorComponent implements OnInit {
               this.appendFeed('Data sa nepodarilo stiahnut ');
             }
           });
-      } else {
+      }
+      else {
         this.appendFeed(
           'Neúspešné spojenie s NCZI' +
             ', správa: ' +
@@ -125,7 +133,8 @@ export class EhealthconnectorComponent implements OnInit {
         );
       }
       this.spinnerService.hide();
-    } else {
+    }
+     else {
       this.textAreaFeed.setValue(this.textAreaFeed.value + '..');
     }
 
@@ -137,7 +146,7 @@ export class EhealthconnectorComponent implements OnInit {
       reason:
         error && error.error && error.error.reason
           ? error.error.reason
-          : 'Neznáma chyba: ' + JSON.stringify(error.error),
+          : 'Neznáma chyba: ' + JSON.stringify(error.error) + '. Pravdepodobne nie je možne vytvoriť spojenie s komunikačným modulom.' ,
       status: error.status,
     };
     this.errorDialogService.openDialog(
@@ -162,13 +171,29 @@ export class EhealthconnectorComponent implements OnInit {
       });
   }
 
+  public dajOupzs(pID: string, evID: string, dID: string) {
+    this.appendFeed('Volanie komunikačného modulu do NCZI');
+    this.commmaxService
+      .dajOupzs(pID, evID, dID)
+      .subscribe((response: string) => {
+        if (response === 'OK')
+          this.appendFeed('Komunikačný modul uspešne zavolaný');
+        else {
+          this.appendFeed(
+            'Komunikačný modul neuspešne zavolaný, správa obsahuje chyby: ' +
+              response
+          );
+        }
+      });
+  }
+
   public appendFeed(appendValue: string) {
     this.textAreaFeed.setValue(
       this.textAreaFeed.value + '\n' + appendValue + '\n'
     );
   }
 
-  public dajjruzid(pID: string, evID: string, dID: string, patient: string) {
+  public dajJruzid(pID: string, evID: string, dID: string, patient: string) {
     this.appendFeed('Volanie komunikačného modulu do NCZI');
     this.commmaxService
       .dajJruzID(pID, evID, dID, patient)
@@ -214,6 +239,27 @@ export class EhealthconnectorComponent implements OnInit {
     this.appendFeed('Volanie komunikačného modulu do NCZI');
     this.commmaxService
       .dajPacientskySumar(pID, evID, dID, patient)
+      .subscribe((response: any) => {
+        if (response === 'OK')
+          this.appendFeed('Komunikačný modul uspešne zavolaný');
+        else {
+          this.appendFeed(
+            'Komunikačný modul neuspešne zavolaný, správa obsahuje chyby: ' +
+              response
+          );
+        }
+      });
+  }
+
+  public dajZaznamOVysetreni(
+    pID: string,
+    evID: string,
+    dID: string,
+    patient: string
+  ) {
+    this.appendFeed('Volanie komunikačného modulu do NCZI');
+    this.commmaxService
+      .dajZaznamOvysetreni(pID, evID, dID, patient)
       .subscribe((response: any) => {
         if (response === 'OK')
           this.appendFeed('Komunikačný modul uspešne zavolaný');

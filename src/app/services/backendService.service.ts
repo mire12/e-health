@@ -61,6 +61,18 @@ export class BackendService {
       );
   }
 
+  setDajOupzsXml(date:string, classification:string): Observable<any> {
+
+    return this.httpClient
+      .post(
+        `${this.baseURL}/ehealth/oupzs/xml?date=${date}&classification=${classification}`, null,  this.HTTPOptions)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
   setDajPacientskySumarXml(classification:string): Observable<any> {
 
     return this.httpClient
@@ -78,6 +90,30 @@ export class BackendService {
     return this.httpClient
       .post(
         `${this.baseURL}/ehealth/dajpacientskysumarudaje/xml?classification=${classification}`, null,  this.HTTPOptions)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
+  setDajZaznamOVysetreniXml(classification:string): Observable<any> {
+
+    return this.httpClient
+      .post(
+        `${this.baseURL}/ehealth/dajzaznamovysetreni/xml?classification=${classification}`, null,  this.HTTPOptions)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
+  setJruzIdXml(classification:string): Observable<any> {
+
+    return this.httpClient
+      .post(
+        `${this.baseURL}/ehealth/jruzid/xml?classification=${classification}`, null,  this.HTTPOptions)
       .pipe(
         map((res) => {
           return res;

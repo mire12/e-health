@@ -42,6 +42,21 @@ export class CommmaxSocketService {
       );
   }
 
+  dajOupzs(pID: String, evID: String, dID: String): Observable<any> {
+    return this.httpClient
+      .post<any>(
+        `${this.baseURL}/DAJOUPZS?pID=${pID}&dID=${dID}&evID=${evID}`,
+        null,
+        this.HTTPOptions
+      )
+      .pipe(
+        map((res) => {
+          console.log('response commax: ' + res);
+          return res;
+        })
+      );
+  }
+
   dajJruzID(pID: String, evID: String, dID: String, patient: String): Observable<any> {
     return this.httpClient
       .post<any>(
@@ -86,6 +101,26 @@ export class CommmaxSocketService {
     return this.httpClient
       .post<any>(
         `${this.baseURL}/DAJ_SUMAR?pID=${pID}&dID=${dID}&evID=${evID}&patient=${patient}`,
+        null,
+        this.HTTPOptions
+      )
+      .pipe(
+        map((res) => {
+          console.log('response commax: ' + res);
+          return res;
+        })
+      );
+  }
+
+  dajZaznamOvysetreni(
+    pID: String,
+    evID: String,
+    dID: String,
+    patient: String
+  ): Observable<any> {
+    return this.httpClient
+      .post<any>(
+        `${this.baseURL}/VYHLADAJ_ZAZNAM?pID=${pID}&dID=${dID}&evID=${evID}&patient=${patient}`,
         null,
         this.HTTPOptions
       )

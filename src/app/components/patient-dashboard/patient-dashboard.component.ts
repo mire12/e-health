@@ -16,7 +16,10 @@ export class PatientDashboardComponent {
   patientDetails: any[];
   patientSummaryRequestDetails: any[];
   patientContactDetails: any[];
+  patientHealthCheck: any[];
   versionCheck: any[];
+  jruzId: any[];
+  oupzs: any[];
   version = VERSION.full;
   ehealthRequestQuestionService: EhealthRequestQuestionService
 
@@ -27,7 +30,10 @@ export class PatientDashboardComponent {
     this.ehealthRequestQuestionService = ehealthRequestQuestionService;
     this.patientSummaryRequestDetails = ehealthRequestQuestionService.getPatientSummaryRequestDetails();
     this.patientContactDetails = ehealthRequestQuestionService.getPatientContactDetails();
+    this.patientHealthCheck = ehealthRequestQuestionService.getPatientHealthCheckSearch();
     this.versionCheck = ehealthRequestQuestionService.getVersionCheck();
+    this.jruzId = ehealthRequestQuestionService.getJruzId();
+    this.oupzs = ehealthRequestQuestionService.getOupzs();
     this.spinnerService.hide();
   }
 

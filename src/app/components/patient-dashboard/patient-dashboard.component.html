@@ -49,12 +49,33 @@
                 >
                 </patientContactForm>
               </mat-tab>
-              <mat-tab label="Overenie verzií">
+              <mat-tab label="Overenie verzií číselnikov">
                 <versionCheckForm
                   #dynamicForm
                   [ehealthRequestDetails]="versionCheck"
                 >
                 </versionCheckForm>
+              </mat-tab>
+              <mat-tab label="Vyhľadanie záznamov pacienta">
+                <patientHealthCheckForm
+                  #dynamicForm
+                  [ehealthRequestDetails]="patientHealthCheck"
+                >
+                </patientHealthCheckForm>
+              </mat-tab>
+              <mat-tab label="Vyhľadanie JRUZ identifikátora">
+                <jruzid-form
+                  #dynamicForm
+                  [ehealthRequestDetails]="jruzId"
+                >
+                </jruzid-form>
+              </mat-tab>
+              <mat-tab label="Vyhľadanie OUPZS identifikátora">
+                <oupzsForm
+                  #dynamicForm
+                  [ehealthRequestDetails]="oupzs"
+                >
+                </oupzsForm>
               </mat-tab>
             </mat-tab-group>
           </mat-card-content>
@@ -62,7 +83,7 @@
       </div>
     </mat-grid-tile>
 
-    <mat-grid-tile rowspan="17">
+    <!--<mat-grid-tile rowspan="17">
       <div class="w100">
         <mat-card class="mat-elevation-z2">
           <mat-card-header>
@@ -100,6 +121,6 @@
           </mat-card-content>
         </mat-card>
       </div>
-    </mat-grid-tile>
+    </mat-grid-tile>-->
   </mat-grid-list>
 </div>
