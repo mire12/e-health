@@ -20,9 +20,9 @@ export class CommmaxSocketService {
 
   private HTTPOptions: Object = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'ehealth-ng-app.herokuapp.com',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, HEAD, OPTIONS',
-      'Access-Control-Allow-Headers': 'access-control-allow-methods, access-control-allow-headers, content-type',
+      'Access-Control-Allow-Headers': 'Access-Control-Allow-Methods, Access-Control-Allow-Headers, Access-Control-Allow-Origin, Content-Type',
       'X-Skip-Interceptor': 'true',
       'Content-Type': 'text/plain',
       'Accept': 'text/plain'
