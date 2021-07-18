@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 
+@Injectable()
 export class BackendService {
   private corsHeaders: HttpHeaders;
   private baseURL: string = 'https://www.itradix.online';
@@ -29,6 +30,24 @@ export class BackendService {
         })
       );
   }
+
+  getEhealthResponses(dID, pID): Observable<any> {
+
+    const listHeaders = new HttpHeaders().set('Accept', 'application/json')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, HEAD, OPTIONS')
+        .set('Access-Control-Allow-Headers', '*');
+
+    return this.httpClient
+      .get(
+        `${this.baseURL}/ehealth/getehealthresponse/${dID}/${pID}`, {'headers': listHeaders})
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
 
   getListDiagnoses(oid:string, oidVersion:string): Observable<any> {
 

@@ -6,6 +6,7 @@ import { NavigationComponent } from '@app/components/navigation/navigation.compo
 import { AuthGaurdService } from '@app/services/auth-gaurd.service';
 import { CommmaxComponent } from '@app/components/commmax/commmax.component';
 import { EhealthconnectorComponent } from '@app/components/ehealthconnector/ehealthconnector.component';
+import { ResponseTableComponent } from '@app/components/ehealth-response/response-table/response-table.component';
 
 const routes: Routes = [
   { path: '', component: NavigationComponent,canActivate:[AuthGaurdService] },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent, canActivate:[AuthGaurdService] },
   { path: 'commax', component: CommmaxComponent,canActivate:[AuthGaurdService] },
+  { path: 'response-table', component: ResponseTableComponent,canActivate:[AuthGaurdService] },
 ];
 
 @NgModule({

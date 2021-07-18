@@ -32,7 +32,7 @@ export class OupzsFormComponent extends EhealthconnectorComponent {
   ngOnInit() {
     this.form = this.qcs.toFormGroup(this.ehealthRequestDetails);
     this.form.controls['doctor'].setValidators([Validators.required]);
-    this.form.controls['patient'].setValidators([Validators.required]);
+    //this.form.controls['patient'].setValidators([Validators.required]);
     this.form.get('doctor').disable();
   }
 

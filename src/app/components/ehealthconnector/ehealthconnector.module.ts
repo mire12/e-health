@@ -13,6 +13,7 @@ import { BackendService } from '@app/services/backendService.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicFormQuestionModule } from '@app/components/dynamic-form-question/dynamic-form-question.module';
 import { EhealthRequestQuestionService } from '@app/services/ehealth-request-question.service';
+import { EhealthResponseModule } from '@app/components/ehealth-response/ehealth-response.module';
 
 
 
@@ -25,6 +26,7 @@ import { EhealthRequestQuestionService } from '@app/services/ehealth-request-que
     ReactiveFormsModule,
     HttpClientModule,
     DynamicFormQuestionModule,
+    EhealthResponseModule
   ],
   providers: [BackendService, EhealthRequestQuestionService],
   exports: [EhealthconnectorComponent, PatientSummaryFormComponent, VersionCheckFormComponent, PatientContactFormComponent, PatientHealthCheckFormComponent, JruzidFormComponent, OupzsFormComponent]
